@@ -1,0 +1,7 @@
+# Backend (Python) dependencies — install with:
+#   python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+fastapi
+uvicorn[standard]
+pydantic[email]
+pydantic-ai-slim[openai]
+openai

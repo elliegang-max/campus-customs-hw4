@@ -1,0 +1,45 @@
+.about section {
+  margin-bottom: 2.5rem;
+}
+
+.about p {
+  max-width: 68ch;
+  color: var(--muted);
+}
+
+.about h2 {
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.values li {
+  padding: 1.25rem;
+  border-left: 3px solid var(--navy);
+  background: var(--bg-soft);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.values p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.note {
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.note p {
+  margin: 0;
+  font-size: 0.85rem;
+}

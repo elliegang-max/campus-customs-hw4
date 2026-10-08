@@ -1,0 +1,327 @@
+:root {
+  /* --- Palette: deep Yale blue + a bold gold accent ---------------------- */
+  --navy: #00356b; /* Yale blue, the anchor */
+  --navy-700: #06489a; /* lifted blue for links / gradients */
+  --navy-900: #001a3d; /* near-black blue for depth */
+  --navy-ink: #04294f;
+
+  --gold: #ffb81c; /* bold accent */
+  --gold-deep: #e39a00; /* accent on light backgrounds (contrast) */
+
+  --ink: #14223d; /* body text, blue-black */
+  --muted: #5b6678; /* secondary text */
+  --bg: #ffffff;
+  --bg-soft: #f4f7fc; /* cool off-white sections */
+  --cream: #faf7f0; /* warm panel */
+  --border: #e2e8f2;
+  --white: #ffffff;
+
+  /* --- Shape & depth ----------------------------------------------------- */
+  --radius: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  --max-width: 1180px;
+  --nav-height: 68px;
+  --shadow-sm: 0 1px 2px rgba(4, 41, 79, 0.06), 0 2px 8px rgba(4, 41, 79, 0.05);
+  --shadow-md: 0 10px 30px rgba(4, 41, 79, 0.12);
+  --shadow-lg: 0 24px 60px rgba(4, 41, 79, 0.2);
+  --ring: 0 0 0 3px rgba(255, 184, 28, 0.5);
+
+  /* --- Type: Fraunces display + Inter body ------------------------------- */
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  color: var(--navy);
+  line-height: 1.08;
+  margin: 0 0 0.5em;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(2.3rem, 5vw, 3.4rem);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--navy-700);
+  text-decoration-color: rgba(255, 184, 28, 0.6);
+  text-underline-offset: 2px;
+}
+
+/* --- Layout -------------------------------------------------------------- */
+
+.page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 3rem 1.25rem 5rem;
+}
+
+.page-header {
+  margin-bottom: 2.25rem;
+}
+
+.page-header p {
+  color: var(--muted);
+  max-width: 60ch;
+  font-size: 1.05rem;
+}
+
+/* An eyebrow label used above section headings. */
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+
+/* --- Buttons ------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--navy);
+  border-radius: var(--radius-pill);
+  background: var(--navy);
+  color: var(--white);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.2s var(--ease),
+    box-shadow 0.2s var(--ease),
+    background 0.2s var(--ease),
+    border-color 0.2s var(--ease);
+}
+
+.btn:hover {
+  background: var(--navy-900);
+  border-color: var(--navy-900);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Gold call-to-action, for the one most important action on a view. */
+.btn-accent {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy-900);
+}
+
+.btn-accent:hover {
+  background: var(--gold-deep);
+  border-color: var(--gold-deep);
+  color: var(--navy-900);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--navy);
+}
+
+.btn-outline:hover {
+  background: var(--bg-soft);
+  color: var(--navy);
+  border-color: var(--navy);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* --- Forms --------------------------------------------------------------- */
+
+.form-card {
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 2.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  box-shadow: var(--shadow-md);
+}
+
+.field {
+  margin-bottom: 1.1rem;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.field input {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font: inherit;
+  transition: border-color 0.15s var(--ease), box-shadow 0.15s var(--ease);
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--navy-700);
+  box-shadow: var(--ring);
+}
+
+.field-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.field-row .field {
+  flex: 1;
+}
+
+.field-hint {
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.form-note {
+  margin: 1.25rem 0 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.form-error {
+  margin: 0 0 1rem;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid #e7b7b7;
+  border-left: 3px solid #b02a2a;
+  border-radius: var(--radius);
+  background: #fdf3f3;
+  font-size: 0.875rem;
+  color: #7d2020;
+}
+
+/* --- Shared bits --------------------------------------------------------- */
+
+.placeholder {
+  padding: 2.5rem;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-soft);
+  color: var(--muted);
+  text-align: center;
+}
+
+/* --- Motion: scroll reveal + page transition ----------------------------- */
+
+/* Elements marked data-reveal start hidden and animate in when seen. */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.6s var(--ease),
+    transform 0.6s var(--ease);
+  will-change: opacity, transform;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Each routed view fades/rises in on navigation. */
+.route-fade {
+  animation: routeIn 0.4s var(--ease) both;
+}
+
+@keyframes routeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes floatUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Honour reduced-motion: keep everything, just stop it moving. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}

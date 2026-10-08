@@ -1,0 +1,30 @@
+# --- Secrets & environment -------------------------------------------------
+.env
+.env.*
+!.env.example
+
+# --- Local-only data pack (NOT for git): database + product images ---------
+data/
+
+# --- Python ----------------------------------------------------------------
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# --- Node / frontend build -------------------------------------------------
+node_modules/
+frontend/dist/
+frontend/node_modules/
+*.local
+
+# --- Audit trail scratch (keep audit_trail.json itself) --------------------
+output/audit_trail.json.tmp
+output/audit_trail.json.bak
+
+# --- OS / editor -----------------------------------------------------------
+.DS_Store
+*.swp
+.idea/
+.vscode/

@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Customs — Live App Check</title>
+    <style>
+      :root {
+        --navy: #00356b;
+        --gold: #e39a00;
+        --ink: #14223d;
+        --muted: #5b6678;
+        --border: #e2e8f2;
+        --bg: #f4f7fc;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: 'Helvetica Neue', Arial, system-ui, sans-serif;
+        color: var(--ink);
+        background: var(--bg);
+        line-height: 1.6;
+      }
+      header {
+        background: linear-gradient(135deg, var(--navy), #001a3d);
+        color: #fff;
+        padding: 2.5rem 1.5rem;
+        border-bottom: 3px solid var(--gold);
+      }
+      header h1 { margin: 0 0 0.4rem; font-size: 1.9rem; }
+      header p { margin: 0; color: rgba(255, 255, 255, 0.82); max-width: 70ch; }
+      main { max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+      .check {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 10px rgba(4, 41, 79, 0.06);
+      }
+      .check h2 {
+        margin: 0 0 0.25rem;
+        color: var(--navy);
+        font-size: 1.3rem;
+      }
+      .tag {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.5rem;
+      }
+      .check p { margin: 0.75rem 0 0; color: var(--ink); }
+      .check p .why { color: var(--muted); }
+      figure { margin: 1rem 0 0; }
+      img {
+        width: 100%;
+        height: auto;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        display: block;
+      }
+      .shot-narrow { max-width: 420px; }
+      footer {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 1.5rem 3rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      code {
+        background: #eef2f8;
+        padding: 0.1rem 0.35rem;
+        border-radius: 4px;
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Campus Customs — Live App Check</h1>
+      <p>
+        Screenshots captured from the running app (frontend on
+        <code>:5173</code>, FastAPI backend on <code>:8000</code>) driving a real
+        Chrome browser. The chat answers are live agent responses grounded in
+        <code>campus_customs.db</code> — no mock data.
+      </p>
+    </header>
+
+    <main>
+      <section class="check">
+        <span class="tag">Check 1 — Honest inventory &amp; price from the DB</span>
+        <h2>Chat checks a specific item’s stock and price</h2>
+        <figure class="shot-narrow">
+          <img
+            src="app_check_images/inventory.png"
+            alt="Chat reply: Baseball Left Chest Crewneck is $58, XL out of stock, available S, M, L, XXL"
+          />
+        </figure>
+        <p>
+          Asked “how many Baseball Left Chest Crewneck in XL, and the price?”, the
+          assistant answers <strong>$58</strong>, says <strong>XL is out of
+          stock</strong>, and lists the sizes that <em>are</em> available (S, M, L,
+          XXL).
+          <span class="why">
+            This matches the database exactly (that product has XL at quantity 0),
+            proving the agent reads real stock and price rather than inventing
+            them.
+          </span>
+        </p>
+      </section>
+
+      <section class="check">
+        <span class="tag">Check 2 — Dynamic search-result cards</span>
+        <h2>Category question renders product cards on the page</h2>
+        <figure class="shot-narrow">
+          <img
+            src="app_check_images/search_cards.png"
+            alt="Chat showing hoodie product cards with images, names, prices and descriptions"
+          />
+        </figure>
+        <p>
+          Tapping the “What hoodies do you have?” quick-reply makes the agent search
+          the catalogue, and the website renders the matches as
+          <strong>product cards</strong> — image, name, price and short description —
+          right in the chat.
+          <span class="why">
+            This shows the agent → front-end contract working: structured matches
+            from the search become cards, and each card links to that product’s
+            page.
+          </span>
+        </p>
+      </section>
+
+      <section class="check">
+        <span class="tag">Check 3 — Usability feature (Problem 9)</span>
+        <h2>Products page: live search, sort, and stock filter</h2>
+        <figure>
+          <img
+            src="app_check_images/usability_filter.png"
+            alt="Products page filtered to hoodie, sorted price low to high, showing 27 of 102 products"
+          />
+        </figure>
+        <p>
+          Typing “hoodie” narrows the catalogue to <strong>27 of 102 products</strong>
+          instantly, and the <strong>Sort → Price (low to high)</strong> control
+          orders them ($45 first). An “In stock only” toggle is also available.
+          <span class="why">
+            This is the usability improvement from Problem 9 — with 100+ items, a
+            shopper can find exactly what they want without endless scrolling.
+          </span>
+        </p>
+      </section>
+
+      <section class="check">
+        <span class="tag">Bonus — Redesign &amp; premium product page</span>
+        <h2>Single-item page with hover-zoom and clear price/stock</h2>
+        <figure>
+          <img
+            src="app_check_images/detail.png"
+            alt="Basic Hoodie Big Yale detail page: large image, $68, colors, size buttons, stock line, tags"
+          />
+        </figure>
+        <p>
+          The redesigned detail page: large product image (“Hover the image to
+          zoom”), Yale-navy/gold palette with a Fraunces display font, clear
+          <strong>$68</strong> price, colour chips, selectable size buttons, and a
+          live stock line (“60 in stock across all sizes”).
+          <span class="why">
+            Shown as supporting evidence of the Problem 10 storefront redesign and
+            premium single-item presentation.
+          </span>
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      Every screenshot was taken against the live running app with the real agent
+      and database. Open any image in
+      <code>output/app_check_images/</code> to inspect it full size.
+    </footer>
+  </body>
+</html>
