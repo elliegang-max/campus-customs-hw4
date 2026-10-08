@@ -632,3 +632,28 @@ Finished `output/harness.md` with section 16: model fields + rationale, the four
 tools and the agent's abilities/non-abilities, the nine safety rules, and specs
 (models/gateway, loop limit, result caps, data, and the exact front+back run
 commands).
+
+**Follow-up prompt**
+
+> Put your code in a folder named hw4 and push it to a public GitHub repo; submit
+> the repo URL. Don't commit the real .env, campus_customs.db, or product images —
+> use .gitignore, include .env.example with placeholders. (Expected layout given.)
+
+**What Claude did.** hw4 was not its own git repo (it sat inside the home-dir
+repo), so initialised a fresh repo scoped to hw4. Wrote `.gitignore` (ignores
+`.env`/`.env.*` except `.env.example`, the whole `data/` pack, `.venv`,
+`node_modules`, build output, audit temp/bak files), `.env.example` (PORTKEY_* and
+session-secret placeholders only), a root `requirements.txt`, and a `README.md`
+(features, layout, the local-only data pack, setup, run commands, seed login).
+Also taught the backend to load a project-root `.env` so the template is
+meaningful (env → .env → course keys file).
+
+Staged everything and leak-checked before committing — confirmed no `.env`,
+`data/`, `campus_customs.db`, product images, `.venv`, or `node_modules` were
+included. Committed, created the public repo with `gh`, and pushed (a first push
+failed with an HTTP 400; retried with a larger `http.postBuffer` and it
+succeeded). Verified on GitHub: 71 files, the required layout all present, and the
+leak-check clean on the remote too.
+
+**Submission — public repo:** https://github.com/elliegang-max/campus-customs-hw4
+(clone: `https://github.com/elliegang-max/campus-customs-hw4.git`)
